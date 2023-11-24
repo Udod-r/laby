@@ -1,0 +1,58 @@
+import java.util.ArrayList;
+
+// Класс для представления узла дерева
+class TreeNode {
+int data;
+ArrayList children;
+
+// Конструктор для инициализации узла
+public TreeNode(int data) {
+this.data = data;
+this.children = new ArrayList<>();
+}
+}
+
+// Класс для представления дерева
+class Tree {
+TreeNode root;
+
+// Конструктор для инициализации дерева
+public Tree(int data) {
+root = new TreeNode(data);
+}
+
+// Метод для добавления потомка к узлу
+public void addChild(TreeNode parent, int data) {
+TreeNode child = new TreeNode(data);
+parent.children.add(child);
+}
+
+// Метод для обхода дерева в глубину (Depth-First Traversal)
+public void depthFirstTraversal(TreeNode node) {
+if (node != null) {
+System.out.print(node.data + " ");
+for (TreeNode child : node.children) {
+depthFirstTraversal(child);
+}
+}
+}
+
+// Метод main для тестирования функционала дерева
+public static void main(String[] args) {
+Tree tree = new Tree(1);
+TreeNode node2 = tree.root;
+tree.addChild(node2, 2);
+tree.addChild(node2, 3);
+tree.addChild(node2, 4);
+
+TreeNode node3 = node2.children.get(0);
+tree.addChild(node3, 5);
+tree.addChild(node3, 6);
+
+TreeNode node4 = node2.children.get(2);
+tree.addChild(node4, 7);
+
+System.out.println("Дерево в глубину (Depth-First Traversal):");
+tree.depthFirstTraversal(tree.root); // Output: 1 2 5 6 3 4 7
+}
+}
