@@ -1,0 +1,31 @@
+class SelectionSort {
+// Метод для сортировки массива с использованием алгоритма сортировки выбором
+public static void sort(int[] arr) {
+int n = arr.length;
+
+// Проходим по всем элементам массива
+for (int i = 0; i < n - 1; i++) {
+// Находим минимальный элемент в оставшейся части массива
+int minIndex = i;
+for (int j = i + 1; j < n; j++) {
+if (arr[j] < arr[minIndex]) {
+minIndex = j;
+}
+}
+
+// Меняем местами текущий элемент с найденным минимальным
+int temp = arr[minIndex];
+arr[minIndex] = arr[i];
+arr[i] = temp;
+}
+}
+
+// Метод main для тестирования алгоритма сортировки выбором
+public static void main(String[] args) {
+int[] arr = {52, 34, 25, 12, 22, 11, 90};
+
+System.out.println("Исходный массив: " + Arrays.toString(arr));
+sort(arr);
+System.out.println("Отсортированный массив: " + Arrays.toString(arr));
+}
+}
